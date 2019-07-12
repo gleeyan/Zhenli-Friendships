@@ -1,0 +1,29 @@
+Friendships Coding Dojo Assignment
+
+@author Zhenli Yang
+
+Main Exercise: 
+
+Write a SQL query that returns a list of users along with their friends' names.
+
+SELECT * FROM users 
+LEFT JOIN friendships ON ____=____ 
+LEFT JOIN users as user2 ON ____ = ____
+
+
+Complete 3 of the 7 "Additional Exercises":
+
+1.  SELECT users.first_name, users.last_name, users2.first_name AS friend_first_name , users2.last_name AS friend_last_name
+    FROM users
+    LEFT JOIN friendships ON users.id = friendships.friend_1_id
+    LEFT JOIN users AS users2 ON friendships.friend_2_id = users2.id
+    WHERE friendships.friend_1_id = '4' OR friendships.friend_2_id = '4'
+
+2.  SELECT COUNT(friendships.friend_1_id) AS amount_of_friendships
+    FROM friendships;
+
+3.  SELECT users.first_name, users.last_name, COUNT(users.id) AS number_of_friendships
+    FROM users
+    LEFT JOIN friendships ON users.id = friendships.friend_1_id
+    LEFT JOIN users AS users2 ON friendships.friend_2_id = users2.id
+    WHERE users.id = '1';
